@@ -1,0 +1,182 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+	<title>Mahir Salihbasic</title>
+	<link>https://mahirs.xyz/tags/matematics/</link>
+	<description>Recent content in matematics on Mahir Salihbasic</description>
+	<generator>Hugo -- gohugo.io</generator>
+	<language>en-us</language>
+	<lastBuildDate>Sun, 15 Jan 2023 22:30:12 +0100</lastBuildDate>
+    
+        <atom:link href="https://mahirs.xyz/tags/matematics/index.xml" rel="self" type="application/rss+xml" />
+	
+	
+	<item>
+		<title>Prenex normal forms in Wolfram Mathematica</title>
+		<link>https://mahirs.xyz/articles/mathematica-prenex/</link>
+		<pubDate>Sun, 15 Jan 2023 22:30:12 +0100</pubDate>
+		
+		<guid>https://mahirs.xyz/articles/mathematica-prenex/</guid>
+		<description>&lt;p&gt;This one caused me quite a pain while trying to find a way to check my work
+on rewriting first-order predicates in their prenex form, especially because it wasn&amp;rsquo;t actually
+documented in Mathematica (for whatever reason). I eventually stumbled upon a StackExchange thread which had
+the solution among its answers/comments.&lt;/p&gt;
+&lt;p&gt;In order for this to work, you&amp;rsquo;ll need to:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Use Logical`Expand[predicate] to get a normal form predicate&lt;/li&gt;
+&lt;li&gt;Use Reduce`ToPrenexForm[predicate] on the normal form to get the prenex normal form&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Here is an example code returning a prenex normal form of the following formula:&lt;/p&gt;
+&lt;p&gt;(∀x)(F(x) ∧ (∃y)(G(y) ∧ H(x,y))) ⇒ (∃y)(T(y) ∧ P(a,b))&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;
+&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;1
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;2
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;3
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;4
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;5
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;6
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;7
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;;width:100%&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-mathematica&#34; data-lang=&#34;mathematica&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;predicate &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; Implies[ForAll[x, F[x] &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; Exists[y, G[y] &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; H[x, y]]], 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  Exists[y, T[y] &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; P[a, b]]]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;normalForm &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; LogicalExpand[predicate]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;prenexNormalForm &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; Reduce`ToPrenexForm[normalForm]&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;In Mathematica 13, it looks like this:
+&lt;figure&gt;&lt;img src=&#34;https://mahirs.xyz/images/prenex-mathematica.png&#34;
+         alt=&#34;Above source code in Mathematica&#34;/&gt;
+&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;Unfortunately, the output is a little bit clunky, with unintuitive variable names, but it seems like that can&amp;rsquo;t be helped.
+Still, it is perfectly fine for making sure moderately complex prenex normal forms are fine, after a lot of manual work, of course.&lt;/p&gt;
+</description>
+	</item>
+	
+	<item>
+		<title>Software</title>
+		<link>https://mahirs.xyz/software/</link>
+		<pubDate>Fri, 13 Jan 2023 23:32:54 +0100</pubDate>
+		
+		<guid>https://mahirs.xyz/software/</guid>
+		<description>&lt;p&gt;I write code that I find interesting, beneficial, challenging or all of the above. Most of the time, it&amp;rsquo;s projects
+that are way out of my humble capabilities, so I end up leaving them abandoned.&lt;/p&gt;
+&lt;p&gt;I prefer simple programs doing simple things well. However, I find that minimalism in code itself is usually a bad
+idea and therefore I oftentimes use up more lines of code than I really need.&lt;/p&gt;
+&lt;h1 id=&#34;active&#34;&gt;Active&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;vactija - Vaktija.ba CLI frontend, written in C, supporting Linux and macOS.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;whitaker-words-jsonisator - Not really a program as much as it&amp;rsquo;s a data repository for Whitaker&amp;rsquo;s WORDS
+converted to JSON, used by another project of mine. Written in Python as a horribly boring script.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;inactive&#34;&gt;Inactive&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Lavinija - Reimplementation of Whitaker&amp;rsquo;s WORDS in Kotlin. It turned out that Latin dictionaries are very hard
+and time consuming to make, no wonder Whitaker spent a good part of his retirement on it. Supports rudimentary search
+functions through a CLI.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;ematura.ba - Website front-end together with an API written in TypeScript (JavaScript originally, before I decided
+to keep my sanity) with React/Express for the purpose of providing high school students of Tuzla canton a chance to practise
+for their matriculation exams. It is basically finished and only needs about a thousand questions to be entered manually.
+Since I absolutely have neither time nor will to do that anytime soon, I consider it an inactive project. Besides, it does need
+a redesign, preferably by someone who actually knows what they are doing.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Ouroboros - Bukkit plugin I wrote as an admin on a Minecraft server once we needed a replacement for an old unsupported plugin. It follows
+all the best OOP practices™ and even includes an abstract factory™ factory™ somewhere in the code. Basically, it&amp;rsquo;s a fancy key-value database
+(supporting MySQL &amp;ndash; specific requirements for the server I worked on &amp;ndash; and YAML) which keeps track of player lives and prevents them
+from losing their inventory contents in case of death (just like Super Mario lives).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;PixelWarzone - SpongeForge + Pixelmon mod plugin I wrote as an admin for the same server. This time, it emulated a &amp;ldquo;warzone&amp;rdquo; (is that
+how the new CoD kids call it nowadays?) mechanic by forcing the players to fight each other and lose their Pokemon if they lost (thus emulating
+the looting mechanism). Thanks also go to Gershon for writing a good chunk of the codebase and adding several new features.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+	</item>
+	
+	<item>
+		<title>Nihilism and Dostoevsky</title>
+		<link>https://mahirs.xyz/articles/dostoevsky-nihilism/</link>
+		<pubDate>Sat, 29 Oct 2022 22:24:40 +0200</pubDate>
+		
+		<guid>https://mahirs.xyz/articles/dostoevsky-nihilism/</guid>
+		<description>&lt;h1 id=&#34;russian-nihilism&#34;&gt;Russian nihilism&lt;/h1&gt;
+&lt;p&gt;Nihilism is a common theme in almost all of Dostoevsky&amp;rsquo;s works. Through his five Great Works, the pinnacles of his literary endeavours, it acts as a binding thread.&lt;/p&gt;
+&lt;p&gt;Nevertheless, the word itself, nihilism, is quite aptly empty: so full of different meanings that by itself it is meaningless. That is why I restrict its usage here to
+denote specifically &lt;em&gt;Russian nihilism&lt;/em&gt;, which is itself merely an umbrella term for a wide variety of oftentimes contradictory philosophies.&lt;/p&gt;
+&lt;p&gt;The conversation between fathers and sons in Turgenev&amp;rsquo;s &lt;em&gt;Fathers and Sons&lt;/em&gt; brings about the rought idea of what the term entails:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&amp;ldquo;We have decided merely to deny everything.&amp;rdquo;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&amp;ldquo;And that you call Nihilism?&amp;rdquo;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&amp;ldquo;That we call Nihilism.&amp;rdquo; In Bazarov&amp;rsquo;s repetition of Paul Petrovitch&amp;rsquo;s words there echoed, this time, a note of pride. [&amp;hellip;]&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&amp;ldquo;You do things, then? At all events, you are preparing to do things?&amp;rdquo; &amp;ldquo;H&amp;rsquo;m!&amp;rdquo; continued Paul Petrovitch. &amp;ldquo;With you to act is to demolish. But how is such demolition to benefit when you do not even know its purpose?&amp;rdquo;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&amp;ldquo;We demolish because we are a force,&amp;rdquo; interposed Arkady.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;All in all, it was a shock for the Russian culture. Based on imported XIX century Western ideas of capitalism, liberalism, socialism and, above all, irreligious materialism, Russian nihilism
+encapsulated a truly revolutionary force aiming to destroy the old social order on the relation of &lt;em&gt;the tsar - Orthodox church - peasantry&lt;/em&gt; and bring about a new utopian society, where everyone would
+enjoy liberties, equality and all the goods of a new enlightened age.&lt;/p&gt;
+&lt;h1 id=&#34;unlimited-freedom&#34;&gt;Unlimited freedom&lt;/h1&gt;
+&lt;p&gt;One basic assumption that these nihilistic ideologies took is the absolute necessity of freedom, and indeed, Russians badly needed freedom. Tsar&amp;rsquo;s repression, serfdom, censorship, pointless wars and all
+the other activities everyday Russians were forced into, but hated from the depths of their heart, were building up resentment for the system, which was far from ideal to say the least.&lt;/p&gt;
+&lt;p&gt;Dostoevsky knew this as well. Although he may appear as just another reactionary, he truly did sympathise with the ordinary people and their needs. As a child, he witnessed a great amount of suffering by
+living in a hospital. He himself indulged in utopian socialism, he was caught by the tsar&amp;rsquo;s secret police and sentenced for political crimes, crimes of progressivism. Naturally, &lt;em&gt;A Writer&amp;rsquo;s Diary&lt;/em&gt; does indeed
+show us his nationalistic, zealous and perhaps even jingoistic side; he was hardly a pacifist loving Christian, a man of many flaws even, and yet it is clear that he garnered sympath for the common people,
+his works and actions speak irrefutably on that matter.&lt;/p&gt;
+&lt;p&gt;Nevertheless, Dostoevsky spoke against the specific kind of freedom sought by nihilists: unlimited freedom. The basic idea is very simple, all you have to do is give man unlimited (within limits!) freedom, and
+then he will find his way to happiness. These limitations, however, which were indeed necessary, since unlimited freedom is at the very least impractical, turned out to be so ridiculously great that they would
+lead to less freedom then what the Russians had, which was very little by the way. In order to build all these utopian societies nihilists dreamed of, it was necessary to create an ideal system where each person
+(or rather, cog in a machine) would fit in perfectly, which naturally presumed a huge set of rules. This inherent contradiction between the formulation of nihilists&amp;rsquo; ideological conception of freedom and its
+practical results was apparent to Dostoevsky and nihilist theoreticians, who deluded the masses (and themselves) about its necessity and temporarity, as if things would just fall in place somehow.&lt;/p&gt;
+&lt;p&gt;That is why, in &lt;em&gt;Demons&lt;/em&gt;, a nihilist theoretician, Shigalyov, says: &lt;em&gt;&amp;ldquo;Starting from unlimited freedom, I conclude with unlimited despotism.&amp;rdquo;&lt;/em&gt;&lt;/p&gt;
+&lt;h1 id=&#34;failure-of-reason&#34;&gt;Failure of reason&lt;/h1&gt;
+&lt;p&gt;Another major issue Dostoevsky found within nihilism, which easily ties in with the problem of freedom, is complete and utter reliance on reason.&lt;/p&gt;
+&lt;p&gt;No wonder, however, that an irreligious materialist of European modernity would dismiss all meaningless abstract terms, such as &lt;em&gt;will&lt;/em&gt; or &lt;em&gt;God&lt;/em&gt;. Indeed, the latest advanced in chemistry and biology have shown
+that man is - just a machine. All thought: chemicals. All actions: chemicals. All beliefs: chemicals. &amp;ldquo;God is dead&amp;rdquo;, or rather, &amp;ldquo;God never existed&amp;rdquo;, are words of such men. This arrogance, espoused even more today
+than in Dostoevsky&amp;rsquo;s time, is what led some men to believe that they have the perfect scientific answers to every single problem of human society and life in general.&lt;/p&gt;
+&lt;p&gt;Dostoevsky answers with individuals and groups. His individuals demonstrate the power of will and failure of reason faced with reality. A man can make up perfect plans for murder-robbery, such that no traces are left
+and the money is secured, and yet the plan fails the moment an unpredictable variables comes into play - namely, surprise visitors. The same man can then succumb to the pressure of his own guilty conscience and
+practically turn himself in to the police. Another man can know that not visiting the doctor will lead to his demise and yet he willingly throws himself into demise out of sheer spite.&lt;/p&gt;
+&lt;p&gt;It turns out that human behaviour is impossible to put on paper like an equation. Even &lt;em&gt;if&lt;/em&gt; all human thoughts and actions are just a bunch of chemical reactions, these reactions are so impossibly complicated that
+nobody could create a generalised model of human behaviour covering all the edge cases. Dostoevsky then goes on to argue that even a single such edge case would be ennugh to collapse the entire system, since systems
+based exclusively on reason will never be able to account for them and yet they need everyone to play perfectly by the rules. After all, Shatov&amp;rsquo;s murderers never would have been caught had it not been for Lyamshin&amp;rsquo;s guilt.&lt;/p&gt;
+&lt;h1 id=&#34;logical-conclusion&#34;&gt;Logical conclusion&lt;/h1&gt;
+&lt;p&gt;Finally, Dostoevsky touches upon the actual logical conclusion of nihilism: suicide.&lt;/p&gt;
+&lt;p&gt;Once you deny everything, you acknowledge nothing, therefore you do not acknowledge the reason to live. If you have no reason to live, you really do need to kill yourself.&lt;/p&gt;
+&lt;p&gt;Of course, the vast majority of people, nihilists and non-nihilists, never carry through this logic to the end, even if it applies to them. Something quite&amp;hellip; &lt;em&gt;irrational&lt;/em&gt;&amp;hellip; comepels them to forget their
+pretty philosophies and live. Kirilov, on the other hand, remained honest and true to himself to the very end, taking the bullet and becoming - not &amp;ldquo;man-god&amp;rdquo;, just dead.&lt;/p&gt;
+&lt;p&gt;Generally, this conclusion is contradictory with other nihilists&amp;rsquo; actions. As Paul Petrovitch noticed, unlike the absolute denial of principles, nihilists still act in accordance with their own principles,
+which is to say that they are either inconsistent or hypocritical.&lt;/p&gt;
+&lt;h1 id=&#34;faith-is-the-key&#34;&gt;Faith is the key&lt;/h1&gt;
+&lt;p&gt;One might expect, rightfully so, that a critic of nihilism would offer an alternative. He indeed did, just not as grand and shiny as what the nihilists offered.&lt;/p&gt;
+&lt;p&gt;Dostoevsky did not offer solutions to hunger, tsarist repression or a shining new utopian system, he was well aware that he knew nothing about them, that he could not concieve of a perfect system that can be written
+down on paper as a set of rules. Instead, he offered people faith in God and His commandments, so that they can, first and foremost, live authentically and true to themselves without the need to commit suicide, and also
+build a society which, while not necessarily utopian, would account for the irrational just as much as the rational.&lt;/p&gt;
+&lt;p&gt;History has shown that his insight was true. Bolsheviks, the successors to nihilists, came and created an utter dictatorship, an imperialist state that ran in contradiction to its core ideals and yet proclaimed them vigourosly.
+On the other hand, the perfectly rational West is seeing its own societal decline, which is sure to bring about its demise sooner or later.
+Reason is failing us all and we have nowhere to turn to, since &amp;ldquo;God is dead&amp;rdquo; is still, though often not outspoken, an ever present slogan among people.&lt;/p&gt;
+&lt;p&gt;Dostoevsky teaches us that it is not too late to find God and base our own actions on His principles.&lt;/p&gt;
+</description>
+	</item>
+	
+	</channel>
+</rss>

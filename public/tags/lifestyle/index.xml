@@ -1,0 +1,223 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+	<title>Mahir Salihbasic</title>
+	<link>https://mahirs.xyz/tags/lifestyle/</link>
+	<description>Recent content in lifestyle on Mahir Salihbasic</description>
+	<generator>Hugo -- gohugo.io</generator>
+	<language>en-us</language>
+	<lastBuildDate>Sun, 11 Dec 2022 21:10:13 +0100</lastBuildDate>
+    
+        <atom:link href="https://mahirs.xyz/tags/lifestyle/index.xml" rel="self" type="application/rss+xml" />
+	
+	
+	<item>
+		<title>Prenex normal forms in Wolfram Mathematica</title>
+		<link>https://mahirs.xyz/articles/mathematica-prenex/</link>
+		<pubDate>Sun, 15 Jan 2023 22:30:12 +0100</pubDate>
+		
+		<guid>https://mahirs.xyz/articles/mathematica-prenex/</guid>
+		<description>&lt;p&gt;This one caused me quite a pain while trying to find a way to check my work
+on rewriting first-order predicates in their prenex form, especially because it wasn&amp;rsquo;t actually
+documented in Mathematica (for whatever reason). I eventually stumbled upon a StackExchange thread which had
+the solution among its answers/comments.&lt;/p&gt;
+&lt;p&gt;In order for this to work, you&amp;rsquo;ll need to:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Use Logical`Expand[predicate] to get a normal form predicate&lt;/li&gt;
+&lt;li&gt;Use Reduce`ToPrenexForm[predicate] on the normal form to get the prenex normal form&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Here is an example code returning a prenex normal form of the following formula:&lt;/p&gt;
+&lt;p&gt;(∀x)(F(x) ∧ (∃y)(G(y) ∧ H(x,y))) ⇒ (∃y)(T(y) ∧ P(a,b))&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;
+&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;1
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;2
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;3
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;4
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;5
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;6
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;7
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;;width:100%&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-mathematica&#34; data-lang=&#34;mathematica&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;predicate &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; Implies[ForAll[x, F[x] &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; Exists[y, G[y] &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; H[x, y]]], 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  Exists[y, T[y] &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; P[a, b]]]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;normalForm &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; LogicalExpand[predicate]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;prenexNormalForm &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; Reduce`ToPrenexForm[normalForm]&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;In Mathematica 13, it looks like this:
+&lt;figure&gt;&lt;img src=&#34;https://mahirs.xyz/images/prenex-mathematica.png&#34;
+         alt=&#34;Above source code in Mathematica&#34;/&gt;
+&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;Unfortunately, the output is a little bit clunky, with unintuitive variable names, but it seems like that can&amp;rsquo;t be helped.
+Still, it is perfectly fine for making sure moderately complex prenex normal forms are fine, after a lot of manual work, of course.&lt;/p&gt;
+</description>
+	</item>
+	
+	<item>
+		<title>Social нетwork</title>
+		<link>https://mahirs.xyz/articles/quit-social-media/</link>
+		<pubDate>Sun, 11 Dec 2022 21:10:13 +0100</pubDate>
+		
+		<guid>https://mahirs.xyz/articles/quit-social-media/</guid>
+		<description>&lt;p&gt;Social media is probably the greatest issue of the Internet, and there are quite a few contenders, by the way.&lt;/p&gt;
+&lt;p&gt;Think about it for a moment: how much time do you spend &amp;ldquo;interacting&amp;rdquo; with people on social media compared to face-to-face interactions?
+Furthermore, how much time do you spend staring at your phone on a daily basis?&lt;/p&gt;
+&lt;p&gt;If the answers are &amp;ldquo;not much&amp;rdquo;, then great for you, but statistically it is far more likely that you are in the other category, the category
+of social media addicts. I do not use the word addiction lightly, for it is a serious condition which must be approached with utmost care
+and consideration.&lt;/p&gt;
+&lt;p&gt;Nevertheless, social media is designed to create psychological addiction.&lt;/p&gt;
+&lt;h1 id=&#34;algorithmic-addiction&#34;&gt;Algorithmic addiction&lt;/h1&gt;
+&lt;p&gt;The use of psychologically addictive techniques to manipulate people into using certain products is much older than modern psychology.
+People have been using advertisements and propaganda for centuries and over time various techniques were already well known and studied
+even before psychology could come up with explanations for why they work.&lt;/p&gt;
+&lt;p&gt;The main difference between good old snake oil salesman of yore and your social media feed is in the potency. A travelling salesman
+aiming to sell his good did not have much time to meet his audience - he had just entered a village, how could he possibly know
+the psychological profiles of villagers? Social media, on the other hand, collects absurd amounts of data every second you use it.
+Facebook and Instagram know exactly how many seconds you have spent looking at a funny meme, how many times you have visited a certain profile,
+what kind of men or women you are into, what bothers you these days, who your friends are&amp;hellip; It is scary to think about, but it probably knows
+you better than you know yourself.&lt;/p&gt;
+&lt;p&gt;Highly sophisticated machine learning algorithms are then continually processing this data to build your optimal psychological profile and offer
+you something akin to a four stage addiction model in which you are unwillingly sucked in:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Profile: It knows your current mood and interests.&lt;/li&gt;
+&lt;li&gt;Trigger: Based on your profile, it sends an appropriate trigger, which could be a post, video, story, or even a random notification.&lt;/li&gt;
+&lt;li&gt;Action: This triggers your response and now you are stuck using the application (which provides even more data for an even better profile)&lt;/li&gt;
+&lt;li&gt;Reward: Your actions ultimately lead to a &amp;ldquo;reward&amp;rdquo;, perhaps you laughed at a funny meme or got a bit horny seeing a scantily clad woman, or even had
+a pleasant conversation with your friends.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;It is quite obvious that each of these steps feeds into the others. Your usage provides data for psychological profiles which can be used to
+trigger you into using the app, which in turn makes you feel good, which lets the app know more about you, which in turn leads to better triggers,
+and so on&amp;hellip;&lt;/p&gt;
+&lt;h1 id=&#34;harsh-reality&#34;&gt;Harsh reality&lt;/h1&gt;
+&lt;p&gt;Unlike other common sources of addiction, social media inherently does not seem as bad. It lets us engage with the world around us, meet new people,
+find others with common interests; we can even let the algorithm choose our partner for us, what a wonderful world we live in!&lt;/p&gt;
+&lt;p&gt;And yet, in spite of all these apparent benefits, there is an interesting correlation between introducing Facebook to new countries and spikes in
+teenage mental health issues. It tends to shorten attention span, since a large quantity of fast-paced rapidly changing content tends to
+have a long-term effect on our brains (TikTok&amp;rsquo;s model and its copies are especially guilty of this). It locks us in echo chambers of people we agree
+with, which can have more long-term negative effects on our social life than any benefits, given the fact that the more time we spend stroking our egos
+with people thousands of kilometres away from us, the less time we spend on meeting new people who live around us and just so happen to have opinions slightly
+different from ours.&lt;/p&gt;
+&lt;h2 id=&#34;islamic-perspective&#34;&gt;Islamic perspective&lt;/h2&gt;
+&lt;p&gt;For a Muslim, all of it becomes even more evident. Muslims are responsible for their time, and although we certainly need to just rest from both worldly
+and religious duties, even this time will be accounted for. Instead of relaxing our mind with some sleep, daydreaming, walking or even doing some soothing
+yet productive activities such as reading useful books, social media provides passive overstimulation of the brain, the exact opposite of the intended effect.&lt;/p&gt;
+&lt;p&gt;It is full of sinful content which is hard to avoid even when you actively try; it encourages people to overshare their private lives and indulge in others&amp;rsquo; lives,
+which leads to envy, backbiting, slander and detoriation in interpersonal relationships.&lt;/p&gt;
+&lt;p&gt;Another dangerous effect is the ever higher presence of false information and various suspicious online &amp;ldquo;scholars&amp;rdquo; spreading mischief and sowing dissent among
+the Ummah. Instead of focusing on proper Islamic education and learning from well educated and trustworthy scholars, people are served all kinds of
+questionable content. This ties in well with the algorithmic nature of social media&amp;rsquo;s information dissemination and the addictive effects thereof.&lt;/p&gt;
+&lt;p&gt;It is therefore evident that practically all the potential benefits of social media can be found elsewhere, while the negatives are still an ever present
+threat on such platforms, which is why it would be much better to avoid using it.&lt;/p&gt;
+&lt;h1 id=&#34;an-easy-solution&#34;&gt;An easy solution&lt;/h1&gt;
+&lt;p&gt;Thank God there is a rather easy solution to the entire problem. It is very simple and consists of only a single step: delete social media.&lt;/p&gt;
+&lt;p&gt;That is all there is to it, just stop using it. Alright, perhaps it is not as easy as that, so I will also provide a few helpful intermediate steps.&lt;/p&gt;
+&lt;p&gt;First of all, recognising the problem is necessary before even attempting to stop anything. If you have not recognised the problem by this point of the article,
+then I am sorry for wasting your time, please go back to clicking your &amp;ldquo;Like&amp;rdquo; buttons and scrolling through the videos.&lt;/p&gt;
+&lt;p&gt;Then, you will need to keep in mind the basic principles of how addiction works, which I have already mentioned above. You might notice that all it takes to
+break the loop is to stop indulging in it, after which it will fall apart quite quickly - within a few months at most:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Profile: By not using it, it will not know your current mood and interests.&lt;/li&gt;
+&lt;li&gt;Trigger: Triggers will be less relevant and they will reach you less.&lt;/li&gt;
+&lt;li&gt;Actions: Since the triggers are not there, you will have less of an incentive to use the platforms.&lt;/li&gt;
+&lt;li&gt;Reward: Without an action, there are no rewards, which will let the neural pathways slowly recover.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Just deleting the applications from your phone and blocking them in your browser will oftentimes fail. This is because there is one more factor involved: investment.
+You have invested time and effort in your social media: followers, likes, news and so on, all stem from your accounts. As long as your brain knows that it can
+access those by reinstalling the applications and logging back in, it will do so.&lt;/p&gt;
+&lt;p&gt;In order to solve this problem, you will need to commit even further by completely deleting your account. Once upon a time, deleting an Instagram account was as
+simple as clicking a few buttons and entering your password. Nowadays, deleting an Instagram account (and almost all social media accounts, for that matter)
+takes 30 days, &amp;ldquo;in case you change your mind&amp;rdquo;. Those sneaky bastards! There is a simple counter-strategy, however:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Remove your phone number (which you should not have provided in the first place) to eliminate any possibility of SMS-based recovery&lt;/li&gt;
+&lt;li&gt;Create a burner e-mail address for which you will not know the password (refer to next step) and make it the primary address of all accounts
+you want to delete&lt;/li&gt;
+&lt;li&gt;Use a password manager to generate a random password which you can copy-paste (but can not memorise), change your password and use the newly generated password&lt;/li&gt;
+&lt;li&gt;Now, when you set your account for deletion, it will usually require you to login within 30 days; but since you do not know your password and since both the e-mail
+and phone number can not be used, you are effectively already locked out of your account forever.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Once your accounts are gone, all the investment will be gone with them. This way, you will not feel like you are missing out and any attempt to return will be
+soon quelled by the fact that your brain knows it will have to spend a lot of time to restart with a new account.&lt;/p&gt;
+&lt;p&gt;Finally, for the sake of long-term happiness and safety from relapse, you will need to fill in all the time you have previously been wasting on social media.
+Start reading long and useful books, writing, learning new things, engaging in hobbies, &lt;em&gt;actually&lt;/em&gt; meeting new people and doing good both for yourself
+and the world around you. It goes a long way, I promise.&lt;/p&gt;
+</description>
+	</item>
+	
+	<item>
+		<title>Nihilism and Dostoevsky</title>
+		<link>https://mahirs.xyz/articles/dostoevsky-nihilism/</link>
+		<pubDate>Sat, 29 Oct 2022 22:24:40 +0200</pubDate>
+		
+		<guid>https://mahirs.xyz/articles/dostoevsky-nihilism/</guid>
+		<description>&lt;h1 id=&#34;russian-nihilism&#34;&gt;Russian nihilism&lt;/h1&gt;
+&lt;p&gt;Nihilism is a common theme in almost all of Dostoevsky&amp;rsquo;s works. Through his five Great Works, the pinnacles of his literary endeavours, it acts as a binding thread.&lt;/p&gt;
+&lt;p&gt;Nevertheless, the word itself, nihilism, is quite aptly empty: so full of different meanings that by itself it is meaningless. That is why I restrict its usage here to
+denote specifically &lt;em&gt;Russian nihilism&lt;/em&gt;, which is itself merely an umbrella term for a wide variety of oftentimes contradictory philosophies.&lt;/p&gt;
+&lt;p&gt;The conversation between fathers and sons in Turgenev&amp;rsquo;s &lt;em&gt;Fathers and Sons&lt;/em&gt; brings about the rought idea of what the term entails:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&amp;ldquo;We have decided merely to deny everything.&amp;rdquo;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&amp;ldquo;And that you call Nihilism?&amp;rdquo;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&amp;ldquo;That we call Nihilism.&amp;rdquo; In Bazarov&amp;rsquo;s repetition of Paul Petrovitch&amp;rsquo;s words there echoed, this time, a note of pride. [&amp;hellip;]&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&amp;ldquo;You do things, then? At all events, you are preparing to do things?&amp;rdquo; &amp;ldquo;H&amp;rsquo;m!&amp;rdquo; continued Paul Petrovitch. &amp;ldquo;With you to act is to demolish. But how is such demolition to benefit when you do not even know its purpose?&amp;rdquo;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&amp;ldquo;We demolish because we are a force,&amp;rdquo; interposed Arkady.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;All in all, it was a shock for the Russian culture. Based on imported XIX century Western ideas of capitalism, liberalism, socialism and, above all, irreligious materialism, Russian nihilism
+encapsulated a truly revolutionary force aiming to destroy the old social order on the relation of &lt;em&gt;the tsar - Orthodox church - peasantry&lt;/em&gt; and bring about a new utopian society, where everyone would
+enjoy liberties, equality and all the goods of a new enlightened age.&lt;/p&gt;
+&lt;h1 id=&#34;unlimited-freedom&#34;&gt;Unlimited freedom&lt;/h1&gt;
+&lt;p&gt;One basic assumption that these nihilistic ideologies took is the absolute necessity of freedom, and indeed, Russians badly needed freedom. Tsar&amp;rsquo;s repression, serfdom, censorship, pointless wars and all
+the other activities everyday Russians were forced into, but hated from the depths of their heart, were building up resentment for the system, which was far from ideal to say the least.&lt;/p&gt;
+&lt;p&gt;Dostoevsky knew this as well. Although he may appear as just another reactionary, he truly did sympathise with the ordinary people and their needs. As a child, he witnessed a great amount of suffering by
+living in a hospital. He himself indulged in utopian socialism, he was caught by the tsar&amp;rsquo;s secret police and sentenced for political crimes, crimes of progressivism. Naturally, &lt;em&gt;A Writer&amp;rsquo;s Diary&lt;/em&gt; does indeed
+show us his nationalistic, zealous and perhaps even jingoistic side; he was hardly a pacifist loving Christian, a man of many flaws even, and yet it is clear that he garnered sympath for the common people,
+his works and actions speak irrefutably on that matter.&lt;/p&gt;
+&lt;p&gt;Nevertheless, Dostoevsky spoke against the specific kind of freedom sought by nihilists: unlimited freedom. The basic idea is very simple, all you have to do is give man unlimited (within limits!) freedom, and
+then he will find his way to happiness. These limitations, however, which were indeed necessary, since unlimited freedom is at the very least impractical, turned out to be so ridiculously great that they would
+lead to less freedom then what the Russians had, which was very little by the way. In order to build all these utopian societies nihilists dreamed of, it was necessary to create an ideal system where each person
+(or rather, cog in a machine) would fit in perfectly, which naturally presumed a huge set of rules. This inherent contradiction between the formulation of nihilists&amp;rsquo; ideological conception of freedom and its
+practical results was apparent to Dostoevsky and nihilist theoreticians, who deluded the masses (and themselves) about its necessity and temporarity, as if things would just fall in place somehow.&lt;/p&gt;
+&lt;p&gt;That is why, in &lt;em&gt;Demons&lt;/em&gt;, a nihilist theoretician, Shigalyov, says: &lt;em&gt;&amp;ldquo;Starting from unlimited freedom, I conclude with unlimited despotism.&amp;rdquo;&lt;/em&gt;&lt;/p&gt;
+&lt;h1 id=&#34;failure-of-reason&#34;&gt;Failure of reason&lt;/h1&gt;
+&lt;p&gt;Another major issue Dostoevsky found within nihilism, which easily ties in with the problem of freedom, is complete and utter reliance on reason.&lt;/p&gt;
+&lt;p&gt;No wonder, however, that an irreligious materialist of European modernity would dismiss all meaningless abstract terms, such as &lt;em&gt;will&lt;/em&gt; or &lt;em&gt;God&lt;/em&gt;. Indeed, the latest advanced in chemistry and biology have shown
+that man is - just a machine. All thought: chemicals. All actions: chemicals. All beliefs: chemicals. &amp;ldquo;God is dead&amp;rdquo;, or rather, &amp;ldquo;God never existed&amp;rdquo;, are words of such men. This arrogance, espoused even more today
+than in Dostoevsky&amp;rsquo;s time, is what led some men to believe that they have the perfect scientific answers to every single problem of human society and life in general.&lt;/p&gt;
+&lt;p&gt;Dostoevsky answers with individuals and groups. His individuals demonstrate the power of will and failure of reason faced with reality. A man can make up perfect plans for murder-robbery, such that no traces are left
+and the money is secured, and yet the plan fails the moment an unpredictable variables comes into play - namely, surprise visitors. The same man can then succumb to the pressure of his own guilty conscience and
+practically turn himself in to the police. Another man can know that not visiting the doctor will lead to his demise and yet he willingly throws himself into demise out of sheer spite.&lt;/p&gt;
+&lt;p&gt;It turns out that human behaviour is impossible to put on paper like an equation. Even &lt;em&gt;if&lt;/em&gt; all human thoughts and actions are just a bunch of chemical reactions, these reactions are so impossibly complicated that
+nobody could create a generalised model of human behaviour covering all the edge cases. Dostoevsky then goes on to argue that even a single such edge case would be ennugh to collapse the entire system, since systems
+based exclusively on reason will never be able to account for them and yet they need everyone to play perfectly by the rules. After all, Shatov&amp;rsquo;s murderers never would have been caught had it not been for Lyamshin&amp;rsquo;s guilt.&lt;/p&gt;
+&lt;h1 id=&#34;logical-conclusion&#34;&gt;Logical conclusion&lt;/h1&gt;
+&lt;p&gt;Finally, Dostoevsky touches upon the actual logical conclusion of nihilism: suicide.&lt;/p&gt;
+&lt;p&gt;Once you deny everything, you acknowledge nothing, therefore you do not acknowledge the reason to live. If you have no reason to live, you really do need to kill yourself.&lt;/p&gt;
+&lt;p&gt;Of course, the vast majority of people, nihilists and non-nihilists, never carry through this logic to the end, even if it applies to them. Something quite&amp;hellip; &lt;em&gt;irrational&lt;/em&gt;&amp;hellip; comepels them to forget their
+pretty philosophies and live. Kirilov, on the other hand, remained honest and true to himself to the very end, taking the bullet and becoming - not &amp;ldquo;man-god&amp;rdquo;, just dead.&lt;/p&gt;
+&lt;p&gt;Generally, this conclusion is contradictory with other nihilists&amp;rsquo; actions. As Paul Petrovitch noticed, unlike the absolute denial of principles, nihilists still act in accordance with their own principles,
+which is to say that they are either inconsistent or hypocritical.&lt;/p&gt;
+&lt;h1 id=&#34;faith-is-the-key&#34;&gt;Faith is the key&lt;/h1&gt;
+&lt;p&gt;One might expect, rightfully so, that a critic of nihilism would offer an alternative. He indeed did, just not as grand and shiny as what the nihilists offered.&lt;/p&gt;
+&lt;p&gt;Dostoevsky did not offer solutions to hunger, tsarist repression or a shining new utopian system, he was well aware that he knew nothing about them, that he could not concieve of a perfect system that can be written
+down on paper as a set of rules. Instead, he offered people faith in God and His commandments, so that they can, first and foremost, live authentically and true to themselves without the need to commit suicide, and also
+build a society which, while not necessarily utopian, would account for the irrational just as much as the rational.&lt;/p&gt;
+&lt;p&gt;History has shown that his insight was true. Bolsheviks, the successors to nihilists, came and created an utter dictatorship, an imperialist state that ran in contradiction to its core ideals and yet proclaimed them vigourosly.
+On the other hand, the perfectly rational West is seeing its own societal decline, which is sure to bring about its demise sooner or later.
+Reason is failing us all and we have nowhere to turn to, since &amp;ldquo;God is dead&amp;rdquo; is still, though often not outspoken, an ever present slogan among people.&lt;/p&gt;
+&lt;p&gt;Dostoevsky teaches us that it is not too late to find God and base our own actions on His principles.&lt;/p&gt;
+</description>
+	</item>
+	
+	</channel>
+</rss>

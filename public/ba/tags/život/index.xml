@@ -1,0 +1,226 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+	<title>Mahir Salihbasic</title>
+	<link>https://mahirs.xyz/ba/tags/%C5%BEivot/</link>
+	<description>Recent content in život on Mahir Salihbasic</description>
+	<generator>Hugo -- gohugo.io</generator>
+	<language>en-us</language>
+	<lastBuildDate>Sun, 11 Dec 2022 21:10:15 +0100</lastBuildDate>
+    
+        <atom:link href="https://mahirs.xyz/ba/tags/%C5%BEivot/index.xml" rel="self" type="application/rss+xml" />
+	
+	
+	<item>
+		<title>Preneks normalne forme u Wolfram Mathematica</title>
+		<link>https://mahirs.xyz/ba/articles/mathematica-prenex/</link>
+		<pubDate>Sun, 15 Jan 2023 22:30:15 +0100</pubDate>
+		
+		<guid>https://mahirs.xyz/ba/articles/mathematica-prenex/</guid>
+		<description>&lt;p&gt;Prilično sam se namučio da bih saznao kako doći do preneks normalnih formi u Mathematici, da bih, naravno, provjerio
+rezultate svog rada. Ispostavi se da u Mathematici ipak postoji (iz nekog razloga) nedokumentovana funkcija koja datu
+predikatsku normalnu formu pretvara u preneks normalnu formu. Srećom postoji StackExchange na kojem sam, kao i mnogo puta
+ranije, našao odgovor.&lt;/p&gt;
+&lt;p&gt;Da bi ovo funkcionisalo, moramo odraditi dvije stvari:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Koristiti Logical`Expand[predikat] da dobijemo predikat u normalnoj formi&lt;/li&gt;
+&lt;li&gt;Koristiti Reduce`ToPrenexForm[predikat] na normalnoj formi da bismo dobili preneks formu&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Primjera radi, ovaj kod će dati preneks formu navedene formule:&lt;/p&gt;
+&lt;p&gt;(∀x)(F(x) ∧ (∃y)(G(y) ∧ H(x,y))) ⇒ (∃y)(T(y) ∧ P(a,b))&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;
+&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;1
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;2
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;3
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;4
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;5
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;6
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;7
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;;width:100%&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-mathematica&#34; data-lang=&#34;mathematica&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;predicate &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; Implies[ForAll[x, F[x] &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; Exists[y, G[y] &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; H[x, y]]], 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  Exists[y, T[y] &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; P[a, b]]]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;normalForm &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; LogicalExpand[predicate]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;prenexNormalForm &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; Reduce`ToPrenexForm[normalForm]&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;U Mathematica 13, to izgleda ovako:
+&lt;figure&gt;&lt;img src=&#34;https://mahirs.xyz/images/prenex-mathematica.png&#34;
+         alt=&#34;Above source code in Mathematica&#34;/&gt;
+&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;Nažalost, izgled jeste pomalo nezgrapan, posebno zbog neintuitivnih imena varijabli, no izgleda kao da se to ne može popraviti.
+Ipak, i dalje odlično dobro radi kada treba provjeriti umjereno složene formule, nakon mnogo ručnog rada, naravno.&lt;/p&gt;
+</description>
+	</item>
+	
+	<item>
+		<title>Sošl njetvork</title>
+		<link>https://mahirs.xyz/ba/articles/quit-social-media/</link>
+		<pubDate>Sun, 11 Dec 2022 21:10:15 +0100</pubDate>
+		
+		<guid>https://mahirs.xyz/ba/articles/quit-social-media/</guid>
+		<description>&lt;p&gt;Društvene mreže su vjerovatno najveći problem današnjeg interneta, a imaju prilično jaku konkurenciju, samo da se zna.&lt;/p&gt;
+&lt;p&gt;Razmislite na momenat: koliko vremena provodite &amp;ldquo;sa ljudima&amp;rdquo; na društvenim mrežama u odnosu na dnevne razgovore lice u lice?
+Koliko vremena dnevno provodite buljeći u telefon?&lt;/p&gt;
+&lt;p&gt;Ako su vam odgovori &amp;ldquo;ne mnogo&amp;rdquo;, odlično za vas, no statistički puno je vjerovatnije da ste u onoj drugoj kategoriji, kategoriji
+ovisnika o društvenim mrežama. Ne koristim pojam ovisnost olako, to je ozbiljno stanje kojem se mora pristupiti pažljivo.&lt;/p&gt;
+&lt;p&gt;Ipak, društvene mreže su dizajnirane da stvore psihološku ovisnost.&lt;/p&gt;
+&lt;h1 id=&#34;algoritamska-ovisnost&#34;&gt;Algoritamska ovisnost&lt;/h1&gt;
+&lt;p&gt;Upotreba psiholoških tehnika kako bi se ljude navelo da koriste određene proizvode mnogo je starija od moderne psihologije.
+Ljudi su koristili reklame i druge oblike propagande stoljećima, a vremenom su dobro proučili razne njihove oblike i metodologije
+prije nego što je psihologija mogla doseći do razloga zbog kojih su tako učinkovite.&lt;/p&gt;
+&lt;p&gt;Glavna razlika između prodavača magle iz davnina i današnjih društvenih medija je u moći. Putujući trgovac koji je namjeravao ubijediti
+ljude da kupe njegov proizvod nije imao mnogo vremena da upozna svoju publiku - tek je došao u selo, kako bi uopšte mogao znati psihološke
+profile seljaka? Društvene mreže međutim prikupljaju apsurdno mnogo podatake svake sekunde. Facebook i Instagram znaju tačno koliko vremena ste
+proveli gledajući smiješnu objavu, koliko puta ste posjetili nečiji profil, kakva vrsta muškaraca ili žena vas privlači, šta vas muči ovih dana,
+ko su vam prijatelji&amp;hellip; Strašno je i pomisliti, no vjerovatno nas poznaju bolje od nas samih.&lt;/p&gt;
+&lt;p&gt;Izuzetno složeni algoritmi mašinskog učenja zatim neprestano obrađuju ove podatke kako bi izgradili vaš najprecizniji psihološki profil
+i zatim vas (htjeli to ili ne) usisali u model ovisnosti koji izgleda otprilike ovako:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Profil: Zna vaše trenutno raspoloženje i interese.&lt;/li&gt;
+&lt;li&gt;Okidač: Na osnovu vašeg profila, šalje vam odgovarajući okidač, nešto poput objave, priče ili nasumične notifikacije.&lt;/li&gt;
+&lt;li&gt;Djelo: Ovaj okidač vas zatim potiče na djelo, što će reći da sada koristite aplikaciju društvene mreže.&lt;/li&gt;
+&lt;li&gt;Nagrada: Vaše djelovanje konačno vam daje &amp;ldquo;nagradu&amp;rdquo;, jer ste se možda nasmijali na neku objavu ili napalili na sliku razgolišene žene, ili ste
+možda samo imali fin &amp;ldquo;razgovor&amp;rdquo; sa poznanikom.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Očigledno je da svi ovi koraci međusobno podržavaju jedni druge kao neka povratna sprega. Vaša upotreba društvenih mreža daje algoritmima sve više podataka
+na osnovu kojih vam može davati bolje okidače i zanimljiviji sadržaj, zbog čega ćete više koristiti aplikaciju, a što će davati algoritmu još više podataka&amp;hellip;&lt;/p&gt;
+&lt;h1 id=&#34;surova-stvarnost&#34;&gt;Surova stvarnost&lt;/h1&gt;
+&lt;p&gt;Za razliku od drugih izvora ovisnosti, društvene mreže same po sebi i ne čine se tako lošim. Dozvoljavaju nam da aktivno učestvujem u svijetu oko nas,
+da upoznajemo druge ljude, pronalazimo one sa zajedničkim interesovanjima; čak možemo prepustiti algoritmu da nam pronađe idealnog partnera, zaista
+živimo u vrlom novom svijetu, prelijepo!&lt;/p&gt;
+&lt;p&gt;Pa ipak, nasuprot svim ovim naizgled prednostima, postoji interesantna korelacija između uvođenja Facebooka u nove države i porasta psiholoških problema
+među mladima. Loše utiču na našu pažnju, s obzirom da veliki broj brzog i promjenjivog sadržaja dugoročno negativno utiče na naš mozak (TikTokov model je
+ovdje poseban krivac). Zaključavaju nas u eho-prostorije ljudi s kojima se slažemo, a isključuju od ostatka svijeta, što vremenom dobija snažan odraz
+u našem karakteru i ponašanju prema drugim ljudima koji su zaista tu fizički pored nas, no imaju nesreću da se ne slažu s nama.&lt;/p&gt;
+&lt;h2 id=&#34;islamska-perspektiva&#34;&gt;Islamska perspektiva&lt;/h2&gt;
+&lt;p&gt;Muslimanu je sve ovo još očiglednije i jasnije. Musliman je odgovoran za svoje vrijeme, što naravno ne znači da se ne smije odmarati kako od vjerskih
+tako i od svjetovnih dužnosti, no itekako znači da je odgovoran čak i za ono vrijeme koje provede u odmoru. Umjesto što opuštamo naš mozak sa snom, sanjarenjem,
+šetanjem ili nekim umirujućim ali produktivnim aktivnostima, poput čitanja korisnih knjiga ili druženja sa dobrim ljudima, društvene mreže nam pružaju
+pasivnost i pretjeranu stimulaciju mozga, upravo suprotno od željenog učinka.&lt;/p&gt;
+&lt;p&gt;Društvene mreže su pune grješnog sadržaja kojeg je teško izbjeći čak i kada to aktivno pokušavama; a istovremeno navode ljude na pretjeranu otvorenost
+privatnih sfera svog života, što vodi do zavisti, ogovaranja i propadanja međuljudskih odnosa.&lt;/p&gt;
+&lt;p&gt;Još jedan vrlo opasan učinak društvenih mreža predstavlja olakšano i ubrzano širenje neprovjerenih ili jednostavno lažnih informacija putem raznih
+&amp;ldquo;online šejhova&amp;rdquo; koji siju razdor u našem ummetu. Umjesto da stiču pravo islamsko znanje i uče od pouzdanih, istinski školovanih učenjaka, ljudi
+konzumiraju sve vrste upitnog sadržaja. Ovo se naravno dobro veže uz algoritamsku prirodu širenja informacija na društvenim mrežama i njenim psihološkim
+posljedicama.&lt;/p&gt;
+&lt;p&gt;Stoga je jasno da se praktično sve potencijalne koristi društvenih mreža mogu naći na drugim mjestima, dok su ružne posljedice neizostavna prijetnja na ovim
+platformama, što će reći da bi ih trebalo izbjegavati.&lt;/p&gt;
+&lt;h1 id=&#34;jednostavno-rješenja&#34;&gt;Jednostavno rješenja&lt;/h1&gt;
+&lt;p&gt;Hvala Bogu postoji prilično jednostavno rješenje za cijeli ovaj problem. Vrlo je lako i sastoji se od samo jednog koraka: izbrišite društvene mreže.&lt;/p&gt;
+&lt;p&gt;To je sve, samo ih prestanite koristiti. Dobro, možda to nije tako jednostavno, pa ću zato ovdje ponuditi nekoliko međukoraka.&lt;/p&gt;
+&lt;p&gt;Prije svega, morate prepoznati problem da bista ga riješili. Ako čitajući ovaj članak još niste shvatili njegovu poentu, onda mi je vrlo žao što sam vam
+protraćio vrijeme, slobodno se vratite svojim &amp;ldquo;Like&amp;rdquo; dugmićima.&lt;/p&gt;
+&lt;p&gt;Zatim ne smijete zaboraviti osnovne principe ovisnosti koje sam ranije spomenuo. Možda ste već primijetili da sve što je potrebno kako biste prekinuli ciklus
+ovisnosti je prestati uključivati se u nj, a nakon čega će se vrlo brzo raspasti - u roku od nekoliko mjeseci najviše:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Profil: Ako ne koristite društvene mreže, algoritam više neće znati vaše raspoloženje i interesovanje.&lt;/li&gt;
+&lt;li&gt;Okidač: Zato će okidači biti manje učinkoviti.&lt;/li&gt;
+&lt;li&gt;Djelovanje: Pošto su okidači slabiji, imat ćete manje razloga da koristiti platforme.&lt;/li&gt;
+&lt;li&gt;Nagrada: Bez upotrebe, nema ni nagrade, pa će to omogućiti živcima da se oporave.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Samo brisanje aplikacija sa telefona i njihovo blokiranje u pretraživaču često neće biti dovoljno. Ovo je zato što u svemu tome postoji još jedan činioc: ulog.
+Uložili ste mnogo vremena i truda u vaše društvene mreže: prijatelji, pratioci, lajkovi, vijesti i sve ostalo se nalazi na vašim korisničkim profilima. Sve dok
+vaš mozak zna da ih ponovo može dobiti samo jednom reinstalacijom aplikacije i prijavom na profil, to će i uraditi.&lt;/p&gt;
+&lt;p&gt;Da biste riješili ovaj problam, morate se potpuno posvetiti tako što ćete potpuno izbrisati profile. Nekoć davno, to nije bilo teško. Izbrisati Instagram profil
+bilo je isto što i pritisnuti nekoliko dugmića i unijeti svoju lozinku. Danas da bi ste izbrisali Instagram profil (i profile na društvenim mrežama uopšte) morate
+čekati najmanje 30 dana, &amp;ldquo;u slučaju da se predomislite&amp;rdquo;. Ah ti podlaci! Međutim, postoji jednostavno rješenje i za ovo:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Uklonite svoj broj telefona (koji niste ni trebali pružiti) sa platforme kako biste isključili mogućnost SMS obnove profila.&lt;/li&gt;
+&lt;li&gt;Napravite jednokratnu e-mail adresu čiju lozinku nećete znati (pogledajte naredni korak) i učinite je primarnom adresom svojih profila.&lt;/li&gt;
+&lt;li&gt;Koristite upravitelja lozinki (password manager) da generišete nasumičnu lozinku koju možete kopirati i zalijepiti (ali ne i zapamtiti), a zatim
+zamijenite lozinke svojih profila sa ovom generisanom.&lt;/li&gt;
+&lt;li&gt;Sada konačno možete uključiti trajnu deaktivaciju svog profila. Obično ćete imati 30 dana da je prekinete, no pošto ne znate novu lozinku, a nemate ni
+pristup novom e-mail računu, praktično ste već sad trajno isključeni sa svog profila.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Onog momenta kada vam profili nestanu, svi ulozi će nestati s njima. Nećete više osjećati kao da nešto propuštate, a vaš mozak više ni neće željeti da se vrati, jer će
+znati da bi povratak iziskivao previše vremena i truda da bi bio isplativ.&lt;/p&gt;
+&lt;p&gt;Na kraju, da biste bili dugoročno sretniji i zadovoljniji, sigurni od povratka, morat ćete pronaći nešto drugo s čim biste ispunili sada slobodno vrijeme.
+Počnite čitati duge i korisne knjige, pisati, učiti nove stvari, baviti se hobijim, &lt;em&gt;zapravo&lt;/em&gt; upoznavati nove ljude i činiti dobro sebi i drugima oko sebe.
+Daleko ćete dogurati, obećavam.&lt;/p&gt;
+</description>
+	</item>
+	
+	<item>
+		<title>Nihilizam i Dostojevski</title>
+		<link>https://mahirs.xyz/ba/articles/dostoevsky-nihilism/</link>
+		<pubDate>Sat, 29 Oct 2022 22:24:44 +0200</pubDate>
+		
+		<guid>https://mahirs.xyz/ba/articles/dostoevsky-nihilism/</guid>
+		<description>&lt;h1 id=&#34;ruski-nihilizam&#34;&gt;Ruski nihilizam&lt;/h1&gt;
+&lt;p&gt;Nihilizam je tema skoro svih djela Dostojevskog. Posebno je kroz njegovih pet velikih knjiga, vrhunaca njegovog književnog stvaralaštva, nihilizam nit poveznica.&lt;/p&gt;
+&lt;p&gt;No, riječ po sebi, nihilizam, je baš prigodno prazna: tako puna raznih značenja da je beznačajna. Zato ovdje njenu upotrebu ograničavam na označavanje isključivo
+&lt;em&gt;ruskog nihilizma&lt;/em&gt;, koji je sam po sebi opet samo pojam koji obuhvata mnoge nerijetko kontradiktorne filozofije.&lt;/p&gt;
+&lt;p&gt;Razgovor između očeva i sinova u Turgenjevom djelu &lt;em&gt;Očevi i djeca&lt;/em&gt; vjerovatno najbolje daje grubu predstavu značenja ovog pojma:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&amp;ldquo;Odlučili smo sve poricati.&amp;rdquo;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&amp;ldquo;I to vi zovete nihilizmom?&amp;rdquo;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&amp;ldquo;Da, to mi zovemo nihilizmom.&amp;rdquo; U Bazarovljevom ponavljanju riječi Pavla Petroviča sada je se odražavao ponos. [&amp;hellip;]&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&amp;ldquo;Vi ipak djelujete? U svim slučajevima, ipak ste spremni djelovati? Hm!&amp;rdquo; nastavio je Pavle Petrovič. &amp;ldquo;Vama je djelovanje uništavanje. Ali kako će tako uništavanje donijeti dobro kada ni sami ne znate njegovu svrhu?&amp;rdquo;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&amp;ldquo;Mi uništavamo jer smo sila,&amp;rdquo; ubaci se Arkadij.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Sve u svemu, bio je to pravi šok za rusku kulturu. Zasnovan na uvezenim zapadnim idejama XIX stoljeća, idejama kapitalizma, liberalizma, socijalizma i, iznad svega, nereligioznog ateizma,
+ruski nihilizam činio je istinski revolucionarnu silu kojoj je cilj bio uništiti stari društveni poredak na relaciji &lt;em&gt;car - crkva - kmetstvo&lt;/em&gt; i izgraditi novo utopijsko društvo u kojem bi svi uživali
+slobodu, jednakost i sva dobra novog prosvijećenog doba.&lt;/p&gt;
+&lt;h1 id=&#34;neograničena-sloboda&#34;&gt;Neograničena sloboda&lt;/h1&gt;
+&lt;p&gt;Jedna osnovna pretpostavka ovih nihilističkih ideologija bila je apsolutna neophodnost slobode, i zaista, Rusi su stvarno očajno vapili za slobodom. Careva represija, kmetstvo, cenzura,
+bespotrebni ratovi i sve ostale aktivnosti svakodnevnog ruskog života na koje su Rusi bili prisiljeni, ali koje su mrzili iz dubine duše, gradile su odbojnost prema sistemu, koji je naravno
+bio daleko od idealnog.&lt;/p&gt;
+&lt;p&gt;Dostojevski je ovo dobro znao. Iako možda daje dojam još jednog reakcionara, on je zaista suosjećao sa običnim narodom i njihovim potrebama. Kao dijete, svjedočio je velikim patnjama živeći u
+bolnici. On je se i sam bavio utopijskim socijalizmom, uhvatila ga je careva tajna policija i osudila za političke zločine, zločine progresivizma. Naravno, &lt;em&gt;Dnevnik jednog pisca&lt;/em&gt; pokazuje nam
+njegovu nacionalističku, ekstremnu, možda čak i džingoističku stranu; teško da je bio miroljubivi kršćanin, čak je imao mnogo mana, ali je ipak jasno da je volio obični narod,
+njegova djela i &lt;em&gt;djela&lt;/em&gt; tu neosporivo govore za njega.&lt;/p&gt;
+&lt;p&gt;Ipak, Dostojevski je govorio protiv ove posebne vrste slobode koju su nihilisti tražili: neograničene slobode. Osnovna ideja je vrlo jednostavna, samo daj čovjeku neograničenu slobodu
+(unutar granica!) i on će onda sam naći put do svoje sreće. Ove granice, međutim, koje su zaista bila neophodne, jer neograničena sloboda je u najmanju ruku nepraktična, ispostavile su se tako
+apsurdno velikim da bi sveukupno vodile do manje slobode nego što su Rusi već imali. Da bi izgradili ova utopijska društva o kojim su nihilisti sanjali, bilo
+je neophodno stvoriti idealni sistem gdje bi svaka osoba (ili bolje rečeno, zupčanik mašine) radila u perfektnoj harmoniji sa ostalima, što je naravno podrazumijevalo ogroman broj pravila.
+Ova nužna kontradiktornost između formulacije nihilističke predodžbe slobode i njenih praktičnih posljedica bila je očigledna kako Dostojevskom tako i nihilističkim teoretičarima, no oni su mase
+(i sebe same) zaludilo idejama neophodnosti i privremenosti, kao da bi se stvari tek tako razriješile.&lt;/p&gt;
+&lt;p&gt;Zato u &lt;em&gt;Zlim dusima&lt;/em&gt; nihilistički teoretičar Šigaljev kaže: &lt;em&gt;&amp;ldquo;Počevši sa neograničenom slobodom, zaključujem sa neograničenom diktaturom.&amp;rdquo;&lt;/em&gt;&lt;/p&gt;
+&lt;h1 id=&#34;neuspijeh-razuma&#34;&gt;Neuspijeh razuma&lt;/h1&gt;
+&lt;p&gt;Još jedan veliki problem koji je Dostojevski pronašao u nihilizmu, koji se lako veže za problem slobode, bio je potpuno oslanjanje na razum.&lt;/p&gt;
+&lt;p&gt;Nije čudno, međutim, to da nereligiozni bezbožni materijalisti evropske modernosti odbacuju sve oblike beznačajnih apstraktnih pojmoba poput &lt;em&gt;volje&lt;/em&gt; ili &lt;em&gt;Boga&lt;/em&gt;. Zaista, najnovija otkrića
+hemije i biologije su pokazala da je čovjek - samo mašina. Sve misli: hemija. Sva djela: hemija. Sva uvjerenja: hemija. &amp;ldquo;Bog je mrtav&amp;rdquo;, ili bolje, &amp;ldquo;Bog nije nikada postojao&amp;rdquo;, su riječi takvih ljudi.
+Ova arogancija, koju danas vidimo i više nego u doba Dostojevskog, je ono što je odvelo neke ljude do uvjerenja da imaju idealne naučne odgovore na svako društveno ili životno pitanje.&lt;/p&gt;
+&lt;p&gt;Dostojevski na ovo daje odgovor sa pojedincima i grupama. Njegov pojedinac pokazuje moć volje i neuspijeh razuma kada se suoči sa stvarnošću. Čovjek može smisliti besprijekoran plan za
+ubistvo i pljačku zelenašice, takav da ne ostavi nikakve tragove i osigura novac, a ipak mu plan propadne onog momenta kada se pojavi nepredviđena varijabla - naime njena sestra. Isti taj
+čovjek onda može podleći pritisku svoje savjesti i praktično se predati policiji. Drugi čovjek može znati da ne odlazak doktoru znači propast, pa ipak se svojevoljno baciti u propast
+čisto iz inata.&lt;/p&gt;
+&lt;p&gt;Ispostavi se da je ljudsko ponašanje nemoguće staviti na papir u obliku jednačine. &lt;em&gt;Čak i kada&lt;/em&gt; bi sve ljudske misli i djela bile samo hrpa hemijskih reakcija, i tada bi ove reakcije bile
+toliko nemoguće komplikovane da niko ne bi mogao napraviti opšti model ljudskog ponašanja koji bi pokrio sve posebno slučajeve. Dostojevski zatim argumentuje da bi samo jedan takav poseban
+slučaj bio dovoljan da sruši cijeli sistem, pošto sistemi zasnovani isključivo na razumu nikako ih ne mogu uzeti u obzir, a ipak zavise od kolektinog učešća u svojim pravilima. Na kraju krajeva,
+ubistvo Šatova nikada ne bi bilo razotkriveno da se sam Ljamšin nije predao policiji.&lt;/p&gt;
+&lt;h1 id=&#34;logički-zaključak&#34;&gt;Logički zaključak&lt;/h1&gt;
+&lt;p&gt;Konačno, Dostojevski dolazi do istinskog logičkog zaključka nihilizma: samoubistva.&lt;/p&gt;
+&lt;p&gt;Onog momenta kada poričete sve, prihvatate ništa(vilo), onda ne prihvatate razlog da živite. Ako nemate razloga da živite, onda se stvarno trebate ubiti.&lt;/p&gt;
+&lt;p&gt;Naravno, ogromna većina ljudi, nihilista i nenihilista, nikada ne sprovedu ovu logiku do samog kraja, iako se odnosi na njih. Nešto prilično&amp;hellip; &lt;em&gt;iracionalno&lt;/em&gt;&amp;hellip; ih primorava da
+zaborave svoje lijepe filozofije i nastave živjeti. Kirilov, s druge strane, ostao je dosljedan sebi do kraja, prihvatio metak i&amp;hellip; nije postao &amp;ldquo;čovjek-bog&amp;rdquo; već samo mrtvac.&lt;/p&gt;
+&lt;p&gt;Uopšteno, ovaj zaključak je kontradiktoran sa svim ostalim djelima nihilista. Kao što je Pavle Petrovič primijetio, unatoč opštem poricanju principa, nihilisti i dalje djeluju
+prema svojim vlastitim principima, što će reći da su ili nedosljedni ili dvolični.&lt;/p&gt;
+&lt;h1 id=&#34;vjera-je-ključ&#34;&gt;Vjera je ključ&lt;/h1&gt;
+&lt;p&gt;Moglo bi se očekivati, s pravom, da kritičar nihilizma ponudi alternativu. Dostojevski je to i uradio, samo što njegova alternativa ne izgleda tako veliko i sjajno.&lt;/p&gt;
+&lt;p&gt;Dostojevski nije ponudio rješenje za glad, carevu represiju ili novi utopijski sistem, bio je svjestan svoje nesposobnosti za to, svjesan da ne bi mogao smisliti idealan sistem koji se
+može zapisati u obliku pravila. Umjesto toga, ponudio je ljudima vjeru u Boga i Njegove zakone, tako da bi mogli, prije svega, živjeti iskreno i dosljedno samima sebi bez potrebe
+samoubistva, a isto tako i da izgrade društvo koje, iako nije nužno utopijsko, bi uzelo u obzir iracionalno baš koliko i racionalno.&lt;/p&gt;
+&lt;p&gt;Historija nam je pokazal da mu je uvid bio tačan. Boljševici, nasljednici nihilista, su došli i stvorili potpunu diktaturu, imperijalističku državu koja je djelovala u kontradikciji
+sa svojim osnovnim idealaima iako ih je živo propovijedala ostatku svijeta.
+S druge strane, perfektno racionalni Zapad vidi svoju društvenu dekadensu koja će sigurno vremenom povući pravu propast.
+Razum nas izdaje i nemamo se kome obratiti, jer &amp;ldquo;Bog je mrtav&amp;rdquo; i dalje ostaje tihim sloganom mnogih ljudi.&lt;/p&gt;
+&lt;p&gt;Dostojevski nam govori da nije kasno pronaći Boga i na osnovu Njegovih principa zasnivati naše djelovanje.&lt;/p&gt;
+</description>
+	</item>
+	
+	</channel>
+</rss>

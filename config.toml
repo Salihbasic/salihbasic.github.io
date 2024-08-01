@@ -1,0 +1,53 @@
+baseURL = 'https://mahirs.net'
+
+languageCode = 'en-us'
+
+title = 'Mahir Salihbašić'
+
+theme = 'barks'
+
+defaultContentLanguage = 'en'
+sectionPagesMenu = 'main'
+
+copyright = 'All information on this website, unless stated otherwise, is hereby released into the public domain.'
+
+[params.navigation]
+	show_navigation = true
+
+[params.head]
+	author = "Mahir Salihbasic"
+	description = "This is a personal website of Mahir Salihbasic"
+	keywords = ["mahir", "salihbasic", "srebrenik", "mahirs"]
+
+[params.social]
+	[params.social.rss]
+		name = "RSS"
+		class = "fa-solid fa-rss"
+		url = "https://mahirs.net/index.xml"
+		weight = 1
+	[params.social.email]
+		name = "e-Mail"
+		class = "fas fa-envelope"
+		url = "mailto:mahir.salihbasic@protonmail.com"
+		weight = 2
+	[params.social.github]
+		name = "GitHub"
+		class = "fab fa-github"
+		url = "https://github.com/Salihbasic"
+		weight = 3		
+
+[params]
+	bosnianUrl = 'https://mahirs.net/ba'
+	showrss = 'true'
+
+[languages]
+	[languages.en]
+		languageName = 'en'
+		weight = 1
+	[languages.ba]
+		languageName = 'ba'
+		weight = 2
+
+[markup]
+	[markup.highlight]
+		style = 'github-dark'
