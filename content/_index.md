@@ -7,11 +7,7 @@ image: images/mahirsphoto.jpg
 
 Hey there, I am Mahir Salihbašić.
 
-I live in Bosnia and Herzegovina, study mathematics, write software and babble about life.
-
-Most of my articles have also been translated to Bosnian.
-
-Various files (e.g. uni exams) can be found [here](https://mahirs.xyz/files).
+I live in Bosnia and Herzegovina, study mathematics and write software.
 
 # Contact
 
