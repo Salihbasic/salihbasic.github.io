@@ -9,7 +9,7 @@ First elementary school in Srebrenik and then a gymnasium at
 Polytechnic high school in Srebrenik, which I graduated as a valedictorian in 2022,
 after which, that same year, I started studying mathematics at the Faculty 
 of Natural sciences and Mathematics at the University of Tuzla and I am currently
-a second year student.
+a third year student.
 
 I fell in love with programming already in elementary school and ever since then
 I have been continuously studying and developing my programming skills. 
