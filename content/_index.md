@@ -9,6 +9,13 @@ Hey there, I am Mahir Salihbašić.
 
 I live in Bosnia and Herzegovina, study mathematics and write software.
 
+# Education
+- Applied mathematics @ University of Tuzla (2022 - present)
+
+# Interests
+I am fascinated by a variety of topics, but I dedicate special attention to the intersection between mathematics, 
+logic, computer science and language.
+
 # Contact
 
 You can find me on GitHub [@Salihbasic](https://github.com/Salihbasic)

@@ -4,7 +4,7 @@
 <head>
 
     
-    <meta name="generator" content="Hugo 0.109.0">
+    <meta name="generator" content="Hugo 0.135.0">
     <meta name="date" content="">
 
     
@@ -82,18 +82,9 @@
 
         <div class="outer">
             <div class="middle">
-                <div class="inner"><header>
-<a href=https://mahirs.net class="title">Mahir Salihbašić</a>
-
-
-	<i>
-	[
-	
-	<a href=https://mahirs.net/ba/articles/mathematica-prenex/>ba</a>
-	
-	]
-	</i>
-
+                <div class="inner">
+<header>
+    <a href="/" class="title">Mahir Salihbašić</a>    
 </header>
 
 
@@ -125,18 +116,18 @@ the solution among its answers/comments.</p>
 </ol>
 <p>Here is an example code returning a prenex normal form of the following formula:</p>
 <p>(∀x)(F(x) ∧ (∃y)(G(y) ∧ H(x,y))) ⇒ (∃y)(T(y) ∧ P(a,b))</p>
-<div class="highlight"><div style="color:#c9d1d9;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<div class="highlight"><div style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#c9d1d9;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#64686c">1
-</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#64686c">2
-</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#64686c">3
-</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#64686c">4
-</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#64686c">5
-</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#64686c">6
-</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#64686c">7
+<pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#737679">7
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#c9d1d9;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-mathematica" data-lang="mathematica"><span style="display:flex;"><span>predicate<span style="color:#6e7681"> </span><span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#6e7681"> 
+<pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-mathematica" data-lang="mathematica"><span style="display:flex;"><span>predicate<span style="color:#6e7681"> </span><span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#6e7681"> 
 </span></span></span><span style="display:flex;"><span><span style="color:#6e7681"> </span>Implies[ForAll[x,<span style="color:#6e7681"> </span>F[x]<span style="color:#6e7681"> </span><span style="color:#ff7b72;font-weight:bold">&amp;&amp;</span><span style="color:#6e7681"> </span>Exists[y,<span style="color:#6e7681"> </span>G[y]<span style="color:#6e7681"> </span><span style="color:#ff7b72;font-weight:bold">&amp;&amp;</span><span style="color:#6e7681"> </span>H[x,<span style="color:#6e7681"> </span>y]]],<span style="color:#6e7681"> 
 </span></span></span><span style="display:flex;"><span><span style="color:#6e7681">  </span>Exists[y,<span style="color:#6e7681"> </span>T[y]<span style="color:#6e7681"> </span><span style="color:#ff7b72;font-weight:bold">&amp;&amp;</span><span style="color:#6e7681"> </span>P[a,<span style="color:#6e7681"> </span>b]]]<span style="color:#6e7681">
 </span></span></span><span style="display:flex;"><span><span style="color:#6e7681">
@@ -147,7 +138,7 @@ the solution among its answers/comments.</p>
 </div>
 <p>In Mathematica 13, it looks like this:
 <figure><img src="/images/prenex-mathematica.png"
-         alt="Above source code in Mathematica"/>
+    alt="Above source code in Mathematica">
 </figure>
 </p>
 <p>Unfortunately, the output is a little bit clunky, with unintuitive variable names, but it seems like that can&rsquo;t be helped.

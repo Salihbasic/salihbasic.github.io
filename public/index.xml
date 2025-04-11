@@ -1,62 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-	<title>Mahir Salihbašić</title>
-	<link>https://mahirs.net/</link>
-	<description>Recent content on Mahir Salihbašić</description>
-	<generator>Hugo -- gohugo.io</generator>
-	<language>en-us</language>
-	<copyright>All information on this website, unless stated otherwise, is hereby released into the public domain.</copyright>
-	<lastBuildDate>Sat, 29 Oct 2022 19:10:06 +0200</lastBuildDate>
-    
-        <atom:link href="https://mahirs.net/index.xml" rel="self" type="application/rss+xml" />
-	
-	
-	<item>
-		<title>Prenex normal forms in Wolfram Mathematica</title>
-		<link>https://mahirs.net/articles/mathematica-prenex/</link>
-		<pubDate>Sun, 15 Jan 2023 22:30:12 +0100</pubDate>
-		
-		<guid>https://mahirs.net/articles/mathematica-prenex/</guid>
-		<description>&lt;p&gt;This one caused me quite a pain while trying to find a way to check my work
-on rewriting first-order predicates in their prenex form, especially because it wasn&amp;rsquo;t actually
-documented in Mathematica (for whatever reason). I eventually stumbled upon a StackExchange thread which had
-the solution among its answers/comments.&lt;/p&gt;
-&lt;p&gt;In order for this to work, you&amp;rsquo;ll need to:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Use Logical`Expand[predicate] to get a normal form predicate&lt;/li&gt;
-&lt;li&gt;Use Reduce`ToPrenexForm[predicate] on the normal form to get the prenex normal form&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;Here is an example code returning a prenex normal form of the following formula:&lt;/p&gt;
-&lt;p&gt;(∀x)(F(x) ∧ (∃y)(G(y) ∧ H(x,y))) ⇒ (∃y)(T(y) ∧ P(a,b))&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#c9d1d9;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;
-&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c9d1d9;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#64686c&#34;&gt;1
-&lt;/span&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#64686c&#34;&gt;2
-&lt;/span&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#64686c&#34;&gt;3
-&lt;/span&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#64686c&#34;&gt;4
-&lt;/span&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#64686c&#34;&gt;5
-&lt;/span&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#64686c&#34;&gt;6
-&lt;/span&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#64686c&#34;&gt;7
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;;width:100%&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; style=&#34;color:#c9d1d9;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-mathematica&#34; data-lang=&#34;mathematica&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;predicate&lt;span style=&#34;color:#6e7681&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#ff7b72;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#6e7681&#34;&gt; 
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6e7681&#34;&gt; &lt;/span&gt;Implies[ForAll[x,&lt;span style=&#34;color:#6e7681&#34;&gt; &lt;/span&gt;F[x]&lt;span style=&#34;color:#6e7681&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#ff7b72;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color:#6e7681&#34;&gt; &lt;/span&gt;Exists[y,&lt;span style=&#34;color:#6e7681&#34;&gt; &lt;/span&gt;G[y]&lt;span style=&#34;color:#6e7681&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#ff7b72;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color:#6e7681&#34;&gt; &lt;/span&gt;H[x,&lt;span style=&#34;color:#6e7681&#34;&gt; &lt;/span&gt;y]]],&lt;span style=&#34;color:#6e7681&#34;&gt; 
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6e7681&#34;&gt;  &lt;/span&gt;Exists[y,&lt;span style=&#34;color:#6e7681&#34;&gt; &lt;/span&gt;T[y]&lt;span style=&#34;color:#6e7681&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#ff7b72;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color:#6e7681&#34;&gt; &lt;/span&gt;P[a,&lt;span style=&#34;color:#6e7681&#34;&gt; &lt;/span&gt;b]]]&lt;span style=&#34;color:#6e7681&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6e7681&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6e7681&#34;&gt;&lt;/span&gt;normalForm&lt;span style=&#34;color:#6e7681&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#ff7b72;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#6e7681&#34;&gt; &lt;/span&gt;LogicalExpand[predicate]&lt;span style=&#34;color:#6e7681&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6e7681&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6e7681&#34;&gt;&lt;/span&gt;prenexNormalForm&lt;span style=&#34;color:#6e7681&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#ff7b72;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#6e7681&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#ff7b72&#34;&gt;Reduce`&lt;/span&gt;ToPrenexForm[normalForm]&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;p&gt;In Mathematica 13, it looks like this:
-&lt;figure&gt;&lt;img src=&#34;https://mahirs.net/images/prenex-mathematica.png&#34;
-         alt=&#34;Above source code in Mathematica&#34;/&gt;
-&lt;/figure&gt;
-&lt;/p&gt;
-&lt;p&gt;Unfortunately, the output is a little bit clunky, with unintuitive variable names, but it seems like that can&amp;rsquo;t be helped.
-Still, it is perfectly fine for making sure moderately complex prenex normal forms are fine, after a lot of manual work, of course.&lt;/p&gt;
-</description>
-	</item>
-	
-	</channel>
+    <title>Mahir Salihbašić</title>
+    <link>https://mahirs.net/</link>
+    <description>Recent content on Mahir Salihbašić</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <copyright>All information on this website, unless stated otherwise, is hereby released into the public domain.</copyright>
+    <lastBuildDate>Wed, 02 Apr 2025 01:46:07 +0200</lastBuildDate>
+    <atom:link href="https://mahirs.net/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Matematika na ručniku -- Linearna algebra</title>
+      <link>https://mahirs.net/articles/napkin/</link>
+      <pubDate>Wed, 02 Apr 2025 01:46:07 +0200</pubDate>
+      <guid>https://mahirs.net/articles/napkin/</guid>
+      <description>&lt;p&gt;Ideju sam besramno ukrao negdje na tuđem blogu, više se ne sjećam tačno gdje. No svakako, bitan je princip.&#xA;Pretpostavimo da sam ja matematičar kojem nekoliko srednjoškolaca pravi društvo tokom ručka, a kako sam svoje sveske&#xA;ostavio kod kuće, imam jedino svoje vjerno pero i ručnik pri ruci. Cilj mi je da na tom ograničenom prostoru, za kratko vrijeme&#xA;ručka, objasnim toj grupici zainteresovanih učenika neku matematičku temu. Zašto da ne?&lt;/p&gt;</description>
+    </item>
+  </channel>
 </rss>

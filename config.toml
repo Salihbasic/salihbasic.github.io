@@ -10,6 +10,7 @@ defaultContentLanguage = 'en'
 sectionPagesMenu = 'main'
 
 copyright = 'All information on this website, unless stated otherwise, is hereby released into the public domain.'
+credits = 'This website uses Hugo with "barks" theme'
 
 [params.navigation]
 	show_navigation = true
