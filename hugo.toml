@@ -1,0 +1,36 @@
+baseURL = 'https://mahirs.net/'
+languageCode = 'en-us'
+title = 'Mahir Salihbašić'
+theme = "HugoTeX"
+DefaultContentLanguage = "en"
+enableInlineShortcodes = true
+footnoteReturnLinkContents = "^"
+
+[pagination]
+  pagerSize = 10
+
+[Params.Author]
+  name = "Mahir Salihbašić"
+  abstract = """
+  I am an applied mathematics student mainly interested in optimisation, control theory and differential games.
+  Apart from purely academic interests, I develop software, read literature, enjoy coffee and tea, amateurishly research military history
+  and volunteer.
+  """
+
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+  series = "series"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+    [markup.goldmark.extensions]
+      [markup.goldmark.extensions.passthrough]
+        enable = true
+        [markup.goldmark.extensions.passthrough.delimiters]
+          inline = [['$', '$']]
+          block = [['$$', '$$']]
+  [markup.highlight]
+    style = "paraiso-dark"  # Syntax highlighting style
