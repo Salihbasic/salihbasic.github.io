@@ -10,6 +10,7 @@ footnoteReturnLinkContents = "^"
   pagerSize = 10
 
 [Params.Author]
+  poweredby = true
   name = "Mahir Salihbašić"
   abstract = """
   I am an applied mathematics student mainly interested in optimisation, control theory and differential games.
